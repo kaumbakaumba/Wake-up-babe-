@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning, Peace 🧡💍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #feada6 100%);
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Sunrise Gradient Animated Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .ring-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        h1 {
+            color: #d84315;
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        p.message {
+            color: #4e342e;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+        }
+
+        .hidden-note {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            color: #bf360c;
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            color: #ff6f61;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="ring-icon">🧡💍</div>
+        <h1>Good Morning, My Peace ❤️</h1>
+        
+        <p class="message">
+            Good morning, my sweet Peace ☀️. As a brand new day begins, I just wanted to pause and remind you how truly deeply loved you are. You bring so much light, comfort, and genuine joy into my life every single day, and simply having you in my world makes everything better. I hope you wake up today feeling relaxed, cherished, and ready to take on whatever comes your way. Whatever today holds, remember that I am always cheering you on, thinking of you, and sending you all my love. May your morning be as beautiful, warm, and incredible as you are to me.
+        </p>
+
+        <button class="btn" onclick="toggleNote()">Click for a Secret Note 💌</button>
+
+        <div class="hidden-note" id="note">
+            💍❤️ Always remember: You are my greatest joy and my absolute favorite person. Go out there and shine today, Peace! ✨
+        </div>
+    </div>
+
+    <script>
+        function toggleNote() {
+            const note = document.getElementById('note');
+            if (note.style.display === 'block') {
+                note.style.display = 'none';
+            } else {
+                note.style.display = 'block';
+            }
+        }
+
+        // Floating Hearts Effect
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const icons = ['🧡', '❤️', '💍', '✨'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
